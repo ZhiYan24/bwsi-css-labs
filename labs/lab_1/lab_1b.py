@@ -11,16 +11,16 @@ and prints the result to the terminal window.
 
 def simple_calculator(num1: float, num2: float) -> float:
     """
-    Function that takes in two numbers and an operation (add, subtract, multiply, divide),
-    then performs the operation on the two numbers and returns the result.
+    Function that takes in two numbers and prompts for an operation (add, subtract, multiply, divide),
+    then performs the operation on the two numbers and returns the operation, result.
 
     Args:
-        operation (str): The operation to perform ("add", "subtract", "multiply", "divide").
         num1 (float): The first number.
         num2 (float): The second number.
 
     Returns:
-        float: The result of the operation.
+        operation (str): The operation performed ("add", "subtract", "multiply", "divide").
+        result (float): The output of the calculation.
     """
     while True:
         operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
