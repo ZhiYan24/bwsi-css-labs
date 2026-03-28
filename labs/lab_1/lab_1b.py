@@ -9,7 +9,7 @@ and prints the result to the terminal window.
 
 """
 
-def simple_calculator(operation: str, num1: float, num2: float) -> float:
+def simple_calculator(num1: float, num2: float) -> float:
     """
     Function that takes in two numbers and an operation (add, subtract, multiply, divide),
     then performs the operation on the two numbers and returns the result.
@@ -22,32 +22,39 @@ def simple_calculator(operation: str, num1: float, num2: float) -> float:
     Returns:
         float: The result of the operation.
     """
-
-    if operation == "add":
-        return num1 + num2
-    elif operation == "subtract":
-        return num1 - num2
-    elif operation == "multiply":
-        return num1 * num2
-    elif operation == "divide":
-        if num2 != 0:
-            return num1 / num2
+    while True:
+        operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
+        if operation == "add":
+            return operation, num1 + num2
+        elif operation == "subtract":
+            return operation, num1 - num2
+        elif operation == "multiply":
+            return operation, num1 * num2
+        elif operation == "divide":
+            if num2 != 0:
+                return operation, num1 / num2
+            else:
+                raise ValueError("Cannot divide by zero.")
         else:
-            raise ValueError("Cannot divide by zero.")
-    else:
-        raise ValueError("Invalid operation. Please choose from 'add', 'subtract', 'multiply', or 'divide'.")
+            print("Invalid input. Please choose an operation from 'add', 'subtract', 'multiply', or 'divide'.")
+
+def get_num(ordinal: str):
+    while True:
+        try:
+            return float(input(f"Enter the {ordinal} number: "))
+        except ValueError:
+            print("Invalid input. Please enter a number.")
 
 def main():
     
     print(f"===== Simple Calculator =====")
 
     # Ask the user for sample input    
-    num1 = float(input("Enter the first number: "))
-    num2 = float(input("Enter the second number: "))
-    operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
+    num1 = get_num("first")
+    num2 = get_num("second")
 
     # Perform the calculation and display the result
-    result = simple_calculator(operation, num1, num2)
+    operation, result = simple_calculator(num1, num2)
     print(f"The result of {operation}ing {num1} and {num2} is: {result}")
 
 
