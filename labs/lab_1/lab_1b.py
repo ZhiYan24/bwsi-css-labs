@@ -33,6 +33,8 @@ def simple_calculator(operation: str, num1: float, num2: float) -> float:
             return num1 / num2
         else:
             raise ValueError("Cannot divide by zero.")
+    else:
+        raise ValueError("Invalid operation. Please choose from 'add', 'subtract', 'multiply', or 'divide'.")
 
 def get_num(ordinal: str):
     while True:
@@ -41,12 +43,6 @@ def get_num(ordinal: str):
         except ValueError:
             print("Invalid input. Please enter a number.")
 
-def get_operation():
-    operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
-    if operation in ["add", "subtract", "multiply", "divide"]:
-        return operation
-    raise ValueError("Invalid operation. Please choose from 'add', 'subtract', 'multiply', or 'divide'.")
-
 def main():
     
     print(f"===== Simple Calculator =====")
@@ -54,7 +50,7 @@ def main():
     # Ask the user for sample input    
     num1 = get_num("first")
     num2 = get_num("second")
-    operation = get_operation()
+    operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
 
     # Perform the calculation and display the result
     result = simple_calculator(operation, num1, num2)
